@@ -1,0 +1,33 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+# You work at the UN in urban planning and are interested in tracking population growth across major metropolitan regions. You are hoping that by looking at historical population numbers that you can predict future growth and help your team make decisions about resourcing.
+```
+```{r error=TRUE}
+calculate_annual_growth <- function(year_one,year_two,pop_y1, pop_y2,city) {
+  annual_growth <- (((pop_y2 - pop_y1) / pop_y1) * 100) / (year_two-year_one)
+  message <- paste("From", year_one, "to", year_two, "the population of", city, "grew by approximately", annual_growth, "% each year.")
+  print(message)
+  return(annual_growth)
+}
+
+city_name <- "Istanbul, Turkey"
+pop_year_one <- 691000
+pop_year_two <- 15029231
+
+# difference population between 2017 and 1927
+pop_change <- pop_year_two - pop_year_one
+print(pop_change)
+
+#calculate percentage growth rate
+percentage_gr <- (((pop_year_two - pop_year_one)/pop_year_one) * 100)
+
+# calculate annual percentage growth rate
+annual_gr <- percentage_gr / (2017 - 1927)
+print(annual_gr)
+
+# calculate annual growth of Malang city
+calculate_annual_growth(2018, 2020, 866118, 874890, "Malang" )
+```
