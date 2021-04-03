@@ -1,0 +1,69 @@
+---
+title: "ACLU Child Separations"
+output: html_notebook
+---
+
+```{r}
+#load libraries
+library(dplyr)
+library(readr)
+```
+```{r}
+#load data
+aclu <- read.csv('aclu_separations.csv')
+```
+```{r}
+#inspect data
+head(aclu)
+summary(aclu)
+```
+```{r}
+#select columns
+aclu <- aclu %>% select(
+  -addr
+)
+```
+```{r}
+#view columns
+colnames(aclu)
+```
+```{r}
+#rename columns
+aclu <- aclu %>% rename(
+  city = program_city,
+  state = program_state,
+  number_children = n,
+  longitude = lon,
+  latitude = lat
+)
+colnames(aclu)
+```
+```{r}
+#add column
+border_latitude <- 25.83
+aclu <- aclu %>% mutate(
+  lat_change_border = latitude - border_latitude
+)
+head(aclu)
+```
+```{r}
+#latitude change
+further_away <- aclu %>% filter(
+  lat_change_border > 15
+) %>%arrange(desc(lat_change_border))
+print(further_away)
+```
+```{r}
+#number of children
+ordered_by_children <- aclu %>% arrange(desc(number_children))
+print(ordered_by_children)
+```
+```{r}
+#state analysis
+chosen_state <- 'AZ'
+chosen_state_separations <- aclu %>% filter(
+  state == chosen_state
+) %>% arrange(desc(number_children))
+print(chosen_state_separations)
+```
+
