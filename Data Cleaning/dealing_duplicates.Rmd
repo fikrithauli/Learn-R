@@ -1,0 +1,39 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(dplyr)
+library(tidyr)
+```
+
+```{r}
+load("students.rda")
+```
+
+```{r}
+# drop id column
+students <- students %>% select(-id)
+head(students)
+```
+
+```{r}
+# find and count duplicated rows
+duplicates <- students %>% duplicated() %>% table()
+print(duplicates)
+
+```
+
+```{r}
+# remove duplicated rows
+students <- students %>% distinct()
+
+```
+
+```{r}
+# find and count duplicated rows in updated data frame
+updated_duplicates <- students %>% duplicated() %>% table()
+print(updated_duplicates)
+
+```

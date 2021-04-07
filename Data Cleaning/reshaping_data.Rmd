@@ -1,0 +1,62 @@
+---
+title: "Data Cleaning in R"
+output: html_notebook
+---
+
+```{r}
+#load libraries
+library(dplyr)
+library(readr)
+library(tidyr)
+```
+
+```{r}
+#list_files
+student_files <- list.files(pattern = "exams_.*csv")
+```
+
+```{r}
+#read files
+df_list <- lapply(student_files, read_csv)
+```
+
+```{r}
+#concatenate data frames
+students <- bind_rows(df_list)
+students
+```
+
+```{r}
+nrow_students <- nrow(students)
+nrow_students
+```
+
+```{r}
+#reshaping the data
+#show original columns
+original_column_names <- colnames(students)
+print(original_column_names)
+print(students)
+```
+```{r}
+#gather columns
+students <- students %>% gather(
+  'fractions', 'probability', key='exam', value='score'
+)
+head(students)
+```
+```{r}
+# updated column names
+gathered_col_names <- colnames(students)
+print(gathered_col_names)
+
+```
+
+```{r}
+# unique value counts of exam
+exam_counts <- students %>% count(exam)
+print(exam_counts)
+
+
+```
+

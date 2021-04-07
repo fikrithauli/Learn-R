@@ -1,0 +1,55 @@
+---
+title: "Data Cleaning in R"
+output: html_notebook
+---
+
+```{r message=FALSE, warning=FALSE}
+#load libraries
+library(dplyr)
+```
+
+```{r}
+#load students data frame
+load("students.rda")
+```
+
+```{r}
+# print structure of students
+str(students)
+```
+
+```{r}
+#mean of age column
+students %>% 
+  summarise(mean_score = mean(score)) #score column is not numeric
+```
+
+```{r}
+#view head of students
+head(students)
+```
+
+```{r}
+#remove % from score column
+students <- students %>% mutate(
+  score = gsub('\\%','',score)
+)
+students
+```
+
+```{r}
+#change score column to numeric
+students <- students %>% mutate(
+  score = as.numeric(score)
+)
+str(students)
+```
+
+```{r}
+#update age column
+students <- students %>% mutate(
+  age = as.numeric(age)
+)
+str(students)
+```
+
