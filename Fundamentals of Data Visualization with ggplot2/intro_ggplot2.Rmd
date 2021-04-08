@@ -1,0 +1,80 @@
+---
+title: "Intro to GGPlot2"
+output: html_notebook
+---
+
+```{r message=FALSE, warning=FALSE}
+# load libraries
+library(dplyr)
+library(readr)
+library(ggplot2)
+```
+
+```{r}
+# load data frame
+movies <- read.csv("imdb.csv")
+```
+
+```{r}
+#define variable and print it
+viz <- ggplot(
+  data=movies
+)
+viz
+```
+
+```{r}
+#Create aesthetic mappings at the canvas level
+viz <- ggplot(
+  data=movies, 
+  aes(x=imdbRating, y=nrOfWins)
+)
+viz
+```
+
+```{r}
+# Add a geom point layer
+viz <- ggplot(
+  data=movies, 
+  aes(x=imdbRating, y=nrOfWins)
+) + geom_point() 
+
+
+# Prints the plot
+viz
+```
+
+```{r}
+# Add manual alpha aesthetic mapping
+viz <- ggplot(
+  data=movies, 
+  aes(x=imdbRating, y=nrOfWins)
+) + geom_point(aes(color=nrOfGenre)) 
+
+
+# Prints the plot
+viz
+```
+
+```{r}
+# Add manual alpha aesthetic mapping
+viz <- ggplot(data=movies, aes(x=imdbRating, y=nrOfWins)) +
+       geom_point(aes(color=nrOfGenre), alpha=.5) 
+
+
+# Prints the plot
+viz
+```
+
+```{r}
+# Add labels as specified
+viz <- ggplot(
+  data=movies, 
+  aes(x=imdbRating, y=nrOfWins)
+) + geom_point(aes(color=nrOfGenre), alpha=0.5) + labs(title="Movie Ratings Vs Award Wins", subtitle="From IMDB dataset", x="Movie Rating", y="Number of Award Wins", color="Number of Genre")
+
+
+# Prints the plot
+viz
+```
+
