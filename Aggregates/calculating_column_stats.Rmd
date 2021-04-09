@@ -1,0 +1,30 @@
+---
+title: "Aggregates in R"
+output: html_notebook
+---
+
+```{r message = FALSE}
+# load packages
+library(readr)
+library(dplyr)
+```
+
+```{r message = FALSE}
+# load order data
+orders <- read_csv("orders.csv")
+
+# inspect orders here:
+head(orders, 10)
+```
+
+```{r}
+# define most_expensive here:
+most_expensive <- orders %>% summarize(most_expensive = max(price, na.rm = TRUE))
+most_expensive
+```
+
+```{r}
+# define num_colors here:
+num_colors <- orders %>% summarize(dist_color = n_distinct(shoe_color))
+num_colors
+```

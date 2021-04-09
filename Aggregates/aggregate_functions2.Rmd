@@ -1,0 +1,44 @@
+---
+title: "Aggregates in R"
+output: html_notebook
+---
+
+```{r message = FALSE}
+# load packages
+library(readr)
+library(dplyr)
+```
+
+```{r message = FALSE}
+# load orders data
+orders <- read_csv("orders.csv")
+
+# inspect orders
+head(orders)
+```
+
+```{r}
+# define shoe_counts here:
+shoe_counts <- orders %>%
+  group_by(shoe_type, shoe_color) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+
+shoe_counts
+
+
+
+```
+
+```{r}
+# define shoe_prices here:
+shoe_prices <- orders %>%
+  group_by(shoe_type, shoe_material) %>%
+  summarize(mean_price = mean(price, na.rm = TRUE)) %>%
+  arrange(desc(mean_price))
+
+shoe_prices
+
+
+
+```

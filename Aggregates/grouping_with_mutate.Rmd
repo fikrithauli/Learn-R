@@ -1,0 +1,37 @@
+---
+title: "Aggregates in R"
+output: html_notebook
+---
+
+```{r message = FALSE}
+# load packages
+library(readr)
+library(dplyr)
+```
+
+```{r message = FALSE}
+# load orders data
+orders <- read_csv("orders.csv")
+
+# inspect orders
+head(orders)
+```
+
+```{r}
+mean_shoe_type <- orders %>%
+  group_by(shoe_type) %>%
+  summarize(mean_price = mean(price, na.rm = TRUE))
+
+mean_shoe_type
+```
+
+```{r}
+# define diff_from_mean here:
+diff_from_mean <- orders %>%
+  group_by(shoe_type) %>%
+  mutate(diff_from_shoe_type_mean = price - mean(price, na.rm = TRUE))
+
+diff_from_mean
+
+
+```

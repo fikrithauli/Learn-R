@@ -1,0 +1,31 @@
+---
+title: "Aggregates in R"
+output: html_notebook
+---
+
+```{r message = FALSE}
+# load packages
+library(readr)
+library(dplyr)
+```
+
+```{r message = FALSE}
+# load orders data
+orders <- read_csv("orders.csv")
+
+# inspect orders
+head(orders)
+```
+
+```{r}
+# define most_pop_orders here:
+most_pop_orders <- orders %>%
+  group_by(shoe_type) %>%
+  summarize(count = n()) %>%
+  filter(count > 16)
+
+most_pop_orders
+
+
+
+```
