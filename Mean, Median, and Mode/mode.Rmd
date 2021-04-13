@@ -1,0 +1,28 @@
+---
+title: "Mode in R"
+output: html_notebook
+---
+```{r message=FALSE, warning=FALSE}
+# import libraries
+library(readr)
+library(dplyr)
+library(DescTools)
+
+# Read author data
+greatest_books = read_csv("top-hundred-books.csv")
+
+# Set author ages to 
+author_ages <- greatest_books$Ages
+
+mode_age <- Mode(author_ages)
+mode_age
+
+print(paste("The mode age of authors from Le Monde's 100 greatest books is: ", mode_age[1]))
+
+
+```
+
+how to find the mode of a dataset in two steps:
+
+1. Find the frequency of every unique number in the dataset
+2. Determine which number has the highest frequency

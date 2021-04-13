@@ -1,0 +1,31 @@
+---
+title: "Mean in R"
+output: html_notebook
+---
+```{r}
+total <- sum(c(29, 49, 42, 43))
+total
+
+mean_value <- total/4
+mean_value
+```
+
+```{r}
+# load libraries
+library(dplyr)
+library(readr)
+
+# Read author data
+greatest_books = read_csv("top-hundred-books.csv")
+head(greatest_books)
+
+# Set author ages to a vector
+author_ages <- greatest_books$Ages
+author_ages
+
+# Calculate mean
+average_age <- mean(author_ages)
+average_age
+```
+
+
