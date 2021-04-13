@@ -1,0 +1,40 @@
+---
+title: "Joining Tables in R"
+output: html_notebook
+---
+
+```{r message = FALSE}
+# load packages
+library(readr)
+library(dplyr)
+```
+
+```{r message = FALSE}
+# load store_a and store_b data
+store_a <- read_csv("store_a.csv")
+store_b <- read_csv("store_b.csv")
+```
+
+```{r}
+# inspect store_a and store_b
+head(store_a)
+head(store_b)
+```
+
+```{r}
+# define left_a_b here:
+left_a_b <- store_a %>% 
+  left_join(store_b)
+
+left_a_b
+```
+
+```{r}
+# define left_b_a here:
+
+right_b_a <- store_b %>% 
+  right_join(store_a)
+
+right_b_a
+
+```

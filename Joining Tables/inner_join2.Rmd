@@ -1,0 +1,43 @@
+---
+title: "Joining Tables in R"
+output: html_notebook
+---
+
+```{r message = FALSE}
+# load packages
+library(readr)
+library(dplyr)
+```
+
+```{r message = FALSE}
+# load and inspect sales and targets data
+sales <- read_csv("sales.csv")
+targets <- read_csv("targets.csv")
+head(sales)
+head(targets)
+```
+
+```{r}
+# load men_women data here:
+men_women <- read_csv("men_women_sales.csv")
+
+# inspect men_women here:
+head(men_women)
+```
+
+```{r}
+# define all_data here:
+all_data <- sales %>%
+  inner_join(targets) %>%
+  inner_join(men_women)
+
+all_data
+```
+
+```{r}
+# define results here:
+results <- all_data %>%
+  filter(revenue > target & women > men)
+
+results
+```

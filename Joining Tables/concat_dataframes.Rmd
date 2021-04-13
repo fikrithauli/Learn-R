@@ -1,0 +1,30 @@
+---
+title: "Joining Tables in R"
+output: html_notebook
+---
+
+```{r message = FALSE}
+# load packages
+library(readr)
+library(dplyr)
+```
+
+```{r message = FALSE}
+# load bakery and ice_cream data
+bakery <- read_csv('bakery.csv')
+ice_cream <- read_csv('ice_cream.csv')
+```
+
+```{r}
+# inspect bakery and ice_cream
+head(bakery)
+head(ice_cream)
+```
+
+```{r}
+# define menu here:
+menu <- bakery %>%
+  bind_rows(ice_cream)
+
+menu
+```
