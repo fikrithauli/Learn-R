@@ -1,0 +1,24 @@
+---
+title: "Variance in R"
+output: html_notebook
+---
+```{r message=FALSE, warning=FALSE}
+# load data
+grades <- c(88, 82, 85, 84, 90)
+mean <- mean(grades)
+
+#Change these five variables
+difference_one <- grades[1] - mean
+difference_two <- grades[2] - mean
+difference_three <- grades[3] - mean
+difference_four <- grades[4] - mean
+difference_five <- grades[5] - mean
+
+print(paste("The mean of the data set is ", mean))
+
+print(paste("The first student is", round(difference_one, digits=2) , "percentage points away from the mean."))
+print(paste("The second student is ", round(difference_two, digits=2) , "percentage points away from the mean."))
+print(paste("The third student is",round(difference_three, digits=2) , "percentage points away from the mean."))
+print(paste("The fourth student is",round(difference_four, digits=2) , "percentage points away from the mean."))
+print(paste("The fifth student is",round(difference_five, digits=2) , "percentage points away from the mean."))
+```

@@ -1,0 +1,25 @@
+---
+title: "Variance in R"
+output: html_notebook
+---
+```{r message=FALSE, warning=FALSE}
+grades <- c(88, 82, 85, 84, 90)
+mean <- mean(grades)
+
+#Change these five variables
+difference_one <- (88 - mean) ^ 2
+difference_two <- (82 - mean) ^ 2
+difference_three <- (85 - mean) ^ 2
+difference_four <- (84 - mean) ^ 2
+difference_five <- (90 - mean) ^ 2
+
+#Part 1: Sum the differences
+difference_sum <- difference_one + difference_two + difference_three + difference_four + difference_five
+
+#Part 2: Average the differences
+variance <- difference_sum / 5
+
+#IGNORE CODE BELOW HERE
+print(paste("The sum of the differences is ", format(difference_sum, scientific = FALSE )))
+print(paste("The variance difference is " , format(variance, scientific = FALSE)))
+```
