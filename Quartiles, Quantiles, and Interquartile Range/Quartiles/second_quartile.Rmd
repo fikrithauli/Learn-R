@@ -1,0 +1,25 @@
+---
+title: "Quartiles"
+output: html_notebook
+---
+
+```{r}
+dataset_one <- c(50, 10, 4, -3, 4, -20, 2)
+# sorted dataset_one: c(-20, -3, 2, 4, 4, 10, 50)
+
+dataset_two <- c(24, 20, 1, 45, -15, 40)
+# sorted dataset_two: c(-15, 1, 20, 24, 40, 45)
+
+# define the second quartile of both datasets here:
+dataset_one_q2 <- 4
+dataset_two_q2 <- 22
+
+```
+
+```{r}
+# ignore the code below here:
+
+tryCatch(print(paste("The second quartile of dataset one is",dataset_one_q2)), error=function(e) {print("You haven't defined dataset_one_q2")})
+         
+tryCatch(print(paste("The second quartile of dataset two is",dataset_two_q2)), error=function(e) {print("You haven't defined dataset_two_q2")})
+```

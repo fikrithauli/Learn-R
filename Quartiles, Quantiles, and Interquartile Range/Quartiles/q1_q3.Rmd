@@ -1,0 +1,35 @@
+---
+title: "Quartiles"
+output: html_notebook
+---
+
+```{r}
+dataset_one <- c(50, 10, 4, -3, 4, -20, 2)
+# sorted dataset_one: [-20, -3, 2, 4, 4, 10, 50]
+
+dataset_two <- c(24, 20, 1, 45, -15, 40)
+# sorted dataset_one: [-15, 1, 20, 24, 40, 45]
+
+dataset_one_q2 <- 4
+dataset_two_q2 <- 22
+
+# define the first and third quartile of both datasets here:
+dataset_one_q1 <- -3
+dataset_one_q3 <- 10
+
+dataset_two_q1 <- 1
+dataset_two_q3 <- 40
+
+```
+
+```{r}
+# ignore the code below here:
+
+tryCatch(print(paste("The first quartile of dataset one is",dataset_one_q1)), error=function(e) {print("You haven't defined dataset_one_q1")})
+
+tryCatch(print(paste("The third quartile of dataset one is",dataset_one_q3)), error=function(e) {print("You haven't defined dataset_one_q3")})
+         
+tryCatch(print(paste("The first quartile of dataset two is",dataset_two_q1)), error=function(e) {print("You haven't defined dataset_two_q1")})
+
+tryCatch(print(paste("The third quartile of dataset two is",dataset_two_q3)), error=function(e) {print("You haven't defined dataset_two_q3")})
+```
